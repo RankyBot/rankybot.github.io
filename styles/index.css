@@ -3,8 +3,9 @@ html, body{
     height: 100%;
     margin: 0;
     padding: 0;
-    background: rgb(39,34,66);
-    background: radial-gradient(circle, rgba(39,34,66,1) 66%, rgba(28,26,37,1) 100%);
+    background: rgb(30, 102, 37);
+    background: radial-gradient(circle, rgba(30, 102, 37) 5%,
+                                        rgba(31,31,32,1) 100%);
 }
 
 .navbar-logo{
@@ -26,11 +27,11 @@ html, body{
 }
 
 .btn-add-discord{
-    background-color: purple;
+    background-color: white;
     padding: 8px;
     border-radius: 10px;
     border: none;
-    color: white;
+    color: #1c5f23;
 }
 
 .btn-ver-caracteristicas{
