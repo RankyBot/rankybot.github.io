@@ -13,7 +13,7 @@ export default function Header() {
             href="https://api.ranky.top/auth"
             className="bg-white text-indigo-700 px-4 py-2 rounded hover:bg-gray-100 transition"
           >
-            Iniciar sesión con Discord
+            Log in with Discord
           </a>
         </nav>
       </div>

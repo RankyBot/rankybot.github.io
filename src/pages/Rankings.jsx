@@ -16,12 +16,12 @@ export default function Rankings() {
 
     fetchGuildRankings(serverId)
       .then(setRankings)
-      .catch(() => alert('Error cargando rankings'));
+      .catch(() => alert('Error loading rankings'));
   }, [user, serverId, navigate]);
 
   return (
     <Layout>
-      <h2 className="text-3xl font-bold mb-6">Rankings del servidor</h2>
+      <h2 className="text-3xl font-bold mb-6">Server rankings</h2>
       <ul className="space-y-4">
         {rankings.map(rank => (
           <li key={rank.id}>

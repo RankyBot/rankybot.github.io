@@ -60,10 +60,10 @@ export default function LoLRanking() {
           <thead className="bg-gray-700">
             <tr>
               <th className="px-4 py-2">#</th>
-              <th className="px-4 py-2">Jugador</th>
+              <th className="px-4 py-2">Player</th>
               <th className="px-4 py-2">Tier</th>
               <th className="px-4 py-2">LP</th>
-              <th className="px-4 py-2">Winrate</th>
+              <th className="px-4 py-2">Win rate</th>
             </tr>
           </thead>
           <tbody>

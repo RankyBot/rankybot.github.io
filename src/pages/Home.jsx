@@ -15,21 +15,21 @@ export default function Home() {
     if (user) {
       fetchMutualGuilds()
         .then(setServers)
-        .catch(() => alert('Error cargando servidores'));
+        .catch(() => alert('Error loading guilds'));
     }
   }, [user]);
 
   return (
     <Layout>
       <div className="text-center space-y-6">
-        <h1 className="text-4xl font-bold">Bienvenido a <span className="text-accent">Ranky</span></h1>
+        <h1 className="text-4xl font-bold">Welcome to <span className="text-accent">Ranky</span></h1>
         {!user ? (
           <a href="https://api.ranky.top/auth">
-            <Button>Iniciar sesión con Discord</Button>
+            <Button>Log in with Discord</Button>
           </a>
         ) : (
           <div className="mt-8">
-            <h2 className="text-2xl mb-4 font-semibold">Tus servidores</h2>
+            <h2 className="text-2xl mb-4 font-semibold">Servers</h2>
             <ul className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {servers.map(server => (
                 <li key={server.id}>

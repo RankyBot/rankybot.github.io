@@ -10,8 +10,8 @@ export default function Navbar() {
       <Link to="/" className="text-xl font-bold text-accent">Ranky</Link>
 
       <div className="flex items-center gap-4">
-        {user && <Link to="/" className="hover:underline">Inicio</Link>}
-        {user && <a href="https://api.ranky.top/auth/logout" className="hover:underline">Cerrar sesión</a>}
+        {user && <Link to="/" className="hover:underline">Home</Link>}
+        {user && <a href="https://api.ranky.top/auth/logout" className="hover:underline">Log out</a>}
 
         <a
           href="https://discord.com/oauth2/authorize?client_id=1005188427634966629&permissions=2952866832&scope=bot"
@@ -19,7 +19,7 @@ export default function Navbar() {
           rel="noopener noreferrer"
           className="bg-white text-green-800 font-semibold px-4 py-2 rounded hover:bg-green-100 transition"
         >
-          Añadir a Discord
+          Add Ranky to your Discord server
         </a>
       </div>
     </nav>
