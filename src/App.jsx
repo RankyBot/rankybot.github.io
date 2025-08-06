@@ -9,7 +9,7 @@ import LoLRanking from './pages/LoLRanking';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900">
+    <div className="min-h-screen bg-ranky-radial text-gray-900">
       <AuthProvider>
         <Router>
           <Routes>
