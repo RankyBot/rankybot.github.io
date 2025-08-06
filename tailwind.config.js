@@ -1,15 +1,22 @@
 /** @type {import('tailwindcss').Config} */
+const { fontFamily } = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: ["./public/index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        background: '#1A1A1A',
-        primary: '#5865F2',
-        accent: '#FFD700',
+        primary: '#1c5f23',
+        secondary: '#daab18',
+        lightGreen: '#729e7e',
+        background: '#1f1f20',
+        buttonGray: 'gray',
       },
       fontFamily: {
-        sans: ['Open Sans', 'sans-serif'],
+        sans: ['Poppins', ...fontFamily.sans],
+      },
+      backgroundImage: {
+        'ranky-radial': 'radial-gradient(circle, rgba(30,102,37,1) 5%, rgba(31,31,32,1) 100%)',
       },
     },
   },

@@ -3,6 +3,7 @@ import { AuthContext } from '../context/AuthContext';
 import { fetchGuildRankings } from '../services/api';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
+import Footer from '../components/Footer';
 
 export default function Rankings() {
   const { serverId } = useParams();
@@ -33,6 +34,7 @@ export default function Rankings() {
           </li>
         ))}
       </ul>
+      <Footer />
     </Layout>
   );
 }

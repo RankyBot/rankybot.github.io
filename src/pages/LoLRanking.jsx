@@ -4,6 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 import { fetchSpecificRanking } from '../services/api';
 import { useParams, useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
+import Footer from '../components/Footer';
 
 export default function LoLRanking() {
   const { serverId, rankingId } = useParams();
@@ -81,6 +82,7 @@ export default function LoLRanking() {
           </tbody>
         </table>
       </div>
+      <Footer />
     </Layout>
   );
 }

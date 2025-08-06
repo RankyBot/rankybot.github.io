@@ -4,6 +4,8 @@ import { fetchMutualGuilds } from '../services/api';
 import { Link } from 'react-router-dom';
 import Layout from '../components/Layout';
 import Button from '../components/Button';
+import Footer from '../components/Footer';
+
 
 export default function Home() {
   const { user } = useContext(AuthContext);
@@ -43,6 +45,7 @@ export default function Home() {
           </div>
         )}
       </div>
+      <Footer />
     </Layout>
   );
 }
