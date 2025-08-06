@@ -1,22 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Navbar from './Navbar';
 
 export default function Header() {
   return (
-    <header className="bg-indigo-700 text-white p-4 shadow-md">
-      <div className="max-w-5xl mx-auto flex justify-between items-center">
-        <h1 className="text-2xl font-bold">
-          <Link to="/">Ranky</Link>
-        </h1>
-        <nav>
-          <a
-            href="https://api.ranky.top/auth"
-            className="bg-white text-indigo-700 px-4 py-2 rounded hover:bg-gray-100 transition"
-          >
-            Log in with Discord
-          </a>
-        </nav>
-      </div>
-    </header>
+    <div className="relative bg-emerald-950 shadow-xl">
+      <Navbar />
+      <div className="absolute inset-0 z-0 bg-ranky-texture bg-repeat bg-[length:80px] opacity-10 pointer-events-none" />
+    </div>
   );
 }
