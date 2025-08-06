@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
 import { AuthProvider } from './context/AuthContext';
 import Layout from './components/Layout';
@@ -12,14 +12,14 @@ import LoLRanking from './pages/LoLRanking';
 export default function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
+      <Router>
         <Routes>
           <Route path="/" element={<Layout><Home /></Layout>} />
           <Route path="/servers" element={<Layout><Servers /></Layout>} />
           <Route path="/servers/:serverId/rankings" element={<Layout><Rankings /></Layout>} />
           <Route path="/servers/:serverId/rankings/lol" element={<Layout><LoLRanking /></Layout>} />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </AuthProvider>
   );
 }
