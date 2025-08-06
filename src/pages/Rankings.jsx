@@ -23,7 +23,7 @@ export default function Rankings() {
       <ul>
         {rankings.map(rank => (
           <li key={rank.id}>
-            <Link to={`/servers/${serverId}/rankings/${rank.name}`}>{rank.name}</Link>
+            <Link to={`/servers/${serverId}/ranking/${rank.name}`}>{rank.name}</Link>
           </li>
         ))}
       </ul>

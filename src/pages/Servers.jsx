@@ -22,7 +22,7 @@ export default function Servers() {
       <ul>
         {servers.map(server => (
           <li key={server.id}>
-            <Link to={`/servers/${server.id}/rankings`}>{server.name}</Link>
+            <Link to={`/servers/${server.id}/ranking`}>{server.name}</Link>
           </li>
         ))}
       </ul>
