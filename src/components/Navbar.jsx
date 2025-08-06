@@ -34,7 +34,6 @@ export default function Navbar() {
         </div>
       </nav>
 
-      <div className="absolute bottom-0 left-0 w-full h-8 bg-gradient-to-b from-emerald-950 via-emerald-900 to-transparent pointer-events-none z-0" />
     </div>
   );
 }
