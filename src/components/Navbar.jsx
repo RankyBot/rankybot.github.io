@@ -6,7 +6,7 @@ export default function Navbar() {
   const { user } = useContext(AuthContext);
 
   return (
-    <div className="relative bg-emerald-950 shadow-lg z-10 bg-ranky-texture bg-cover bg-center">
+    <div className="relative bg-emerald-950 shadow-lg z-10 bg-ranky-texture bg-[length:80px] bg-repeat opacity-10 shadow-lg z-10">
       <nav className="px-6 md:container md:mx-auto md:px-8 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 md:gap-3">
           <img
@@ -34,7 +34,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-b from-emerald-950 via-emerald-900 to-transparent pointer-events-none z-0" />
+      <div className="absolute bottom-0 left-0 w-full h-8 bg-gradient-to-b from-emerald-950 via-emerald-900 to-transparent pointer-events-none z-0" />
     </div>
   );
 }
