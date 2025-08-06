@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <div className="text-center space-y-6">
+      <div className="text-center space-y-6 bg-ranky-radial">
         <h1 className="text-4xl font-bold">Welcome to <span className="text-accent">Ranky</span></h1>
         {!user ? (
           <a href="https://api.ranky.top/auth">
