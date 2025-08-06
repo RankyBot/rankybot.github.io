@@ -6,7 +6,7 @@ export default function Navbar() {
   const { user } = useContext(AuthContext);
 
   return (
-    <div className="relative bg-emerald-950 shadow-lg z-10">
+    <div className="relative bg-emerald-950 shadow-lg z-10 bg-ranky-texture bg-cover bg-center">
       <nav className="px-6 md:container md:mx-auto md:px-8 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 md:gap-3">
           <img
@@ -14,7 +14,7 @@ export default function Navbar() {
             alt="Ranky logo"
             className="w-8 h-8 md:w-10 md:h-10 rounded-full"
           />
-          <span className="text-xl md:text-3xl font-bold md:font-black tracking-tight bg-gradient-to-r from-yellow-400 via-yellow-300 to-gray-300 text-transparent bg-clip-text">
+          <span className="text-xl md:text-3xl font-black tracking-tight bg-gradient-to-r from-yellow-400 via-yellow-300 to-gray-300 text-transparent bg-clip-text">
             Ranky
           </span>
         </Link>
@@ -27,15 +27,14 @@ export default function Navbar() {
             href="https://discord.com/oauth2/authorize?client_id=1005188427634966629&permissions=2952866832&scope=bot"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-gradient-to-r from-yellow-200 via-yellow-100 to-yellow-50 text-amber-900 font-semibold px-3 md:px-4 py-2 rounded hover:brightness-105 transition text-sm md:text-base"
+            className="bg-gradient-to-r from-yellow-200 via-yellow-100 to-yellow-50 text-amber-900 font-semibold px-3 md:px-4 py-2 rounded hover:brightness-110 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 text-sm md:text-base"
           >
             Add Ranky to your Discord server
           </a>
         </div>
       </nav>
 
-      {/* Fade visual inferior */}
-      <div className="absolute bottom-0 left-0 right-0 h-4 bg-gradient-to-b from-emerald-950 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-b from-emerald-950 via-emerald-900 to-transparent pointer-events-none z-0" />
     </div>
   );
 }
