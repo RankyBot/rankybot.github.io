@@ -1,3 +1,4 @@
+// pages/Home.jsx
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { fetchMutualGuilds } from '../services/api';
@@ -25,12 +26,21 @@ export default function Home() {
       ) : (
         <div>
           <h2>Tus servidores</h2>
-          <ul>
-            {servers.map(server => (
-              <li key={server.id}>
-                <Link to={`/servers/${server.id}/rankings`}>{server.name}</Link>
-              </li>
-            ))}
+          <ul style={{ listStyle: 'none', padding: 0 }}>
+            {servers
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map(server => (
+                <li key={server.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+                  <img
+                    src={server.iconUrl}
+                    alt={`${server.name} icon`}
+                    style={{ width: 32, height: 32, borderRadius: 8, marginRight: 10 }}
+                  />
+                  <Link to={`/servers/${server.id}/rankings`} style={{ textDecoration: 'none', color: 'black' }}>
+                    {server.name}
+                  </Link>
+                </li>
+              ))}
           </ul>
         </div>
       )}
