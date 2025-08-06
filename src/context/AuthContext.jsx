@@ -6,8 +6,7 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Aquí podrías hacer una llamada al backend para obtener el usuario logueado si SESSION_ID está presente
-    fetch('https://tu-backend.com/api/me', { credentials: 'include' })
+    fetch('https://api.ranky.top/me', { credentials: 'include' })
       .then(res => res.ok ? res.json() : null)
       .then(data => setUser(data))
       .catch(() => setUser(null));
