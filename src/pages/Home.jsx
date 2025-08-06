@@ -1,8 +1,9 @@
-// pages/Home.jsx
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { fetchMutualGuilds } from '../services/api';
 import { Link } from 'react-router-dom';
+import Layout from '../components/Layout';
+import Button from '../components/Button';
 
 export default function Home() {
   const { user } = useContext(AuthContext);
@@ -17,33 +18,31 @@ export default function Home() {
   }, [user]);
 
   return (
-    <div>
-      <h1>Bienvenido a Ranky</h1>
-      {!user ? (
-        <a href="https://api.ranky.top/auth">
-          <button>Iniciar sesión con Discord</button>
-        </a>
-      ) : (
-        <div>
-          <h2>Tus servidores</h2>
-          <ul style={{ listStyle: 'none', padding: 0 }}>
-            {servers
-              .sort((a, b) => a.name.localeCompare(b.name))
-              .map(server => (
-                <li key={server.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-                  <img
-                    src={server.iconUrl}
-                    alt={`${server.name} icon`}
-                    style={{ width: 32, height: 32, borderRadius: 8, marginRight: 10 }}
-                  />
-                  <Link to={`/servers/${server.id}/rankings`} style={{ textDecoration: 'none', color: 'black' }}>
+    <Layout>
+      <div className="text-center space-y-6">
+        <h1 className="text-4xl font-bold">Bienvenido a <span className="text-accent">Ranky</span></h1>
+        {!user ? (
+          <a href="https://api.ranky.top/auth">
+            <Button>Iniciar sesión con Discord</Button>
+          </a>
+        ) : (
+          <div className="mt-8">
+            <h2 className="text-2xl mb-4 font-semibold">Tus servidores</h2>
+            <ul className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              {servers.map(server => (
+                <li key={server.id}>
+                  <Link
+                    to={`/servers/${server.id}/rankings`}
+                    className="block bg-gray-800 hover:bg-gray-700 rounded-xl p-4 transition-colors duration-300 text-white text-center shadow"
+                  >
                     {server.name}
                   </Link>
                 </li>
               ))}
-          </ul>
-        </div>
-      )}
-    </div>
+            </ul>
+          </div>
+        )}
+      </div>
+    </Layout>
   );
 }

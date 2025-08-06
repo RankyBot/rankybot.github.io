@@ -10,14 +10,16 @@ import LoLRanking from './pages/LoLRanking';
 
 export default function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Layout><Home /></Layout>} />
-          <Route path="/servers/:serverId/rankings" element={<Layout><Rankings /></Layout>} />
-          <Route path="/servers/:serverId/ranking/:rankingId" element={<Layout><LoLRanking /></Layout>} />
-        </Routes>
-      </Router>
-    </AuthProvider>
+    <div className="min-h-screen bg-gray-50 text-gray-900">
+      <AuthProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Layout><Home /></Layout>} />
+            <Route path="/servers/:serverId/rankings" element={<Layout><Rankings /></Layout>} />
+            <Route path="/servers/:serverId/ranking/:rankingId" element={<Layout><LoLRanking /></Layout>} />
+          </Routes>
+        </Router>
+      </AuthProvider>
+    </div>
   );
 }
