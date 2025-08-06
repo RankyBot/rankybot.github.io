@@ -6,9 +6,9 @@ export default function Navbar() {
   const { user } = useContext(AuthContext);
 
   return (
-    <div className="relative bg-emerald-950 z-10 bg-ranky-texture bg-[length:80px] bg-repeat z-10 shadow-xl">
+    <div className="relative bg-emerald-950 z-10 bg-ranky-texture bg-[length:80px] bg-repeat bg-opacity-10 z-10 shadow-xl">
       <nav className="px-6 md:container md:mx-auto md:px-8 py-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 md:gap-3 hover:brightness-110 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200">
+        <Link to="/" className="flex items-center gap-2 md:gap-3 hover:brightness-110 hover:-translate-y-0.5 transition-all duration-200">
           <img
             src="/ranky-logo.png"
             alt="Ranky logo"

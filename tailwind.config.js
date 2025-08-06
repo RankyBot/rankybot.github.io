@@ -16,7 +16,6 @@ module.exports = {
         sans: ['Poppins', ...fontFamily.sans],
       },
       backgroundImage: {
-        'ranky-radial': 'radial-gradient(circle, rgba(30,102,37,1) 5%, rgba(31,31,32,1) 100%)',
         'ranky-texture': "url('/public/textures/noise.png')",
       },
     },
