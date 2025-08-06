@@ -17,7 +17,7 @@ export default function App() {
           <Route path="/" element={<Layout><Home /></Layout>} />
           <Route path="/servers" element={<Layout><Servers /></Layout>} />
           <Route path="/servers/:serverId/rankings" element={<Layout><Rankings /></Layout>} />
-          <Route path="/servers/:serverId/rankings/:rankingId" element={<Layout><LoLRanking /></Layout>} />
+          <Route path="/servers/:serverId/ranking/:rankingId" element={<Layout><LoLRanking /></Layout>} />
         </Routes>
       </Router>
     </AuthProvider>
