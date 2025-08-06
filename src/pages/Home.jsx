@@ -19,7 +19,7 @@ export default function Home() {
     <div>
       <h1>Bienvenido a Ranky</h1>
       {!user ? (
-        <a href="https://api.ranky.top/auth/login">
+        <a href="https://api.ranky.top/auth">
           <button>Iniciar sesión con Discord</button>
         </a>
       ) : (
