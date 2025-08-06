@@ -6,8 +6,8 @@ export default function Navbar() {
   const { user } = useContext(AuthContext);
 
   return (
-    <div className="relative bg-emerald-950 shadow-lg z-10 bg-ranky-texture bg-[length:80px] bg-repeat opacity-10 shadow-lg z-10">
-      <nav className="px-6 md:container md:mx-auto md:px-8 py-4 flex items-center justify-between">
+    <div className="relative bg-emerald-950 shadow-lg z-10 shadow-xl">
+      <nav className="relative z-10 px-6 md:container md:mx-auto md:px-8 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 md:gap-3">
           <img
             src="/ranky-logo.png"
@@ -33,7 +33,7 @@ export default function Navbar() {
           </a>
         </div>
       </nav>
-
+      <div className="absolute inset-0 z-0 bg-ranky-texture bg-repeat bg-[length:80px] opacity-10 pointer-events-none" />
     </div>
   );
 }
