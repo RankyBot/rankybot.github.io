@@ -17,7 +17,7 @@ export async function fetchGuildRankings(guildId) {
 }
 
 export async function fetchSpecificRanking(guildId, rankingId) {
-  const res = await fetch(`${BASE_URL}/rankings/fromGuild/${guildId}/rankings/${rankingId}`, {
+  const res = await fetch(`${BASE_URL}/rankings/fromGuild/${guildId}/ranking/${rankingId}`, {
     credentials: 'include'
   });
   if (!res.ok) throw new Error('Error fetching specific ranking');
