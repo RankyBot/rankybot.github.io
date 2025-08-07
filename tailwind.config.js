@@ -28,11 +28,6 @@ module.exports = {
       animation: {
         'glow-hover': 'glow-out 1.2s ease-in-out',
       },
-      textShadow: {
-        sm: '1px 1px 2px rgba(255, 255, 255, 0.5)',
-        DEFAULT: '2px 2px 4px rgba(255, 255, 255, 0.7)',
-        lg: '3px 3px 6px rgba(255, 255, 255, 0.9)',
-      },
     },
   },
   plugins: [],

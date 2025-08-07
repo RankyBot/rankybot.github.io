@@ -22,7 +22,7 @@ export default function Navbar() {
       </Link>
 
       <div className="flex items-center gap-3 md:gap-4">
-        {user && <a href="https://api.ranky.top/auth/logout" className="text-white hover:text-shadow transition-all duration-400 text-xl md:text-3xl">Log out</a>}
+        {user && <a href="https://api.ranky.top/auth/logout" className="bg-white text-black font-semibold px-3 md:px-4 py-2 rounded hover:bg-gray-200 hover:shadow-[0_0_12px_2px_rgba(255,255,255,0.5)] transition-all duration-400 text-sm md:text-base">Log out</a>}
 
         <a
           href="https://discord.com/oauth2/authorize?client_id=1005188427634966629&permissions=2952866832&scope=bot"
