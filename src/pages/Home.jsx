@@ -35,7 +35,7 @@ export default function Home() {
                 <li key={server.id}>
                   <Link
                     to={`/servers/${server.id}/rankings`}
-                    className="block bg-gray-800 hover:bg-gray-700 rounded-xl p-4 transition-colors duration-300 text-white text-center shadow"
+                    className="block bg-emerald-950 hover:bg-emerald-800 rounded-xl p-4 transition-colors duration-300 text-white text-center shadow"
                   >
                     {server.name}
                   </Link>
