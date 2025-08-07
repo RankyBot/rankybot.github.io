@@ -56,8 +56,8 @@ export default function LoLRanking() {
     <Layout>
       <h2 className="text-3xl font-bold mb-6">Ranking: {rankingId}</h2>
       <div className="overflow-x-auto">
-        <table className="w-full text-left bg-gray-800 rounded-lg shadow">
-          <thead className="bg-gray-700">
+        <table className="w-full text-left bg-emerald-800 rounded-lg shadow">
+          <thead className="bg-emerald-700">
             <tr>
               <th className="px-4 py-2">#</th>
               <th className="px-4 py-2">Player</th>
@@ -68,7 +68,7 @@ export default function LoLRanking() {
           </thead>
           <tbody>
             {accounts.map((acc, index) => (
-              <tr key={acc.id} className="hover:bg-gray-700 transition">
+              <tr key={acc.id} className="hover:bg-emerald-700 transition">
                 <td className="px-4 py-2">{index + 1}</td>
                 <td className="px-4 py-2">{acc.name}#{acc.tagLine}</td>
                 <td className="px-4 py-2">{acc.rank.tier} {acc.rank.division}</td>

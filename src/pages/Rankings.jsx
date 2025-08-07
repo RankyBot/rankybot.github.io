@@ -27,7 +27,7 @@ export default function Rankings() {
           <li key={rank.id}>
             <Link
               to={`/servers/${serverId}/ranking/${rank.name}`}
-              className="block bg-gray-800 hover:bg-gray-700 rounded-lg p-4 transition duration-300 shadow"
+              className="block bg-emerald-950 hover:bg-emerald-800 rounded-lg p-4 transition duration-300 shadow"
             >
               {rank.name}
             </Link>
