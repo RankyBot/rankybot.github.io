@@ -25,7 +25,7 @@ export default function Navbar() {
           href="https://discord.com/oauth2/authorize?client_id=1005188427634966629&permissions=2952866832&scope=bot"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-gradient-to-r from-yellow-50 via-yellow-100 to-yellow-200 text-amber-900 font-semibold px-3 md:px-4 py-2 rounded hover:brightness-110 hover:shadow-[0_0_12px_2px_rgba(255,255,255,0.5)] transition-all duration-400 text-sm md:text-base"
+          className="bg-gradient-to-r from-white via-emerald-100 to-emerald-200 text-emerald-950 font-semibold px-3 md:px-4 py-2 rounded hover:brightness-110 hover:shadow-[0_0_12px_2px_rgba(255,255,255,0.5)] transition-all duration-400 text-sm md:text-base"
         >
           Add Ranky to your Discord server
         </a>
