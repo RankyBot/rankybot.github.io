@@ -14,7 +14,7 @@ export default function Navbar() {
         <img
           src="/ranky-logo.png"
           alt="Ranky logo"
-          className="w-8 h-8 md:w-10 md:h-10 rounded-full transition-shadow duration-300 group-hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.5)]"
+          className="w-8 h-8 md:w-10 md:h-10 rounded-full transition-shadow duration-400 group-hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.5)]"
         />
         <span className="glow-text text-xl md:text-3xl font-black tracking-tight bg-gradient-to-r from-yellow-400 via-yellow-300 to-gray-300 text-transparent bg-clip-text">
           Ranky
@@ -22,7 +22,7 @@ export default function Navbar() {
       </Link>
 
       <div className="flex items-center gap-3 md:gap-4">
-        {user && <a href="https://api.ranky.top/auth/logout" className="text-white hover:brightness-110 hover:shadow-[0_0_12px_2px_rgba(255,255,255,0.5)] transition-all duration-400 text-xl md:text-3xl">Log out</a>}
+        {user && <a href="https://api.ranky.top/auth/logout" className="text-white glow-text transition-all duration-400 text-xl md:text-3xl">Log out</a>}
 
         <a
           href="https://discord.com/oauth2/authorize?client_id=1005188427634966629&permissions=2952866832&scope=bot"
