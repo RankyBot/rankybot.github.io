@@ -22,8 +22,7 @@ export default function Navbar() {
       </Link>
 
       <div className="flex items-center gap-3 md:gap-4">
-        {user && <Link to="/" className="hover:underline">Home</Link>}
-        {user && <a href="https://api.ranky.top/auth/logout" className="hover:underline">Log out</a>}
+        {user && <a href="https://api.ranky.top/auth/logout" className="hover:underline font-white glow-text text-xl md:text-3xl">Log out</a>}
 
         <a
           href="https://discord.com/oauth2/authorize?client_id=1005188427634966629&permissions=2952866832&scope=bot"
