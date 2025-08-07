@@ -16,7 +16,7 @@ export default function Navbar() {
           alt="Ranky logo"
           className="w-8 h-8 md:w-10 md:h-10 rounded-full transition-shadow duration-300 group-hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.5)]"
         />
-        <span className="text-xl md:text-3xl font-black tracking-tight bg-gradient-to-r from-yellow-400 via-yellow-300 to-gray-300 text-transparent bg-clip-text transition-shadow duration-300 group-hover:shadow-[0_0_8px_2px_rgba(255,255,255,0.5)]">
+        <span className="glow-text text-xl md:text-3xl font-black tracking-tight bg-gradient-to-r from-yellow-400 via-yellow-300 to-gray-300 text-transparent bg-clip-text">
           Ranky
         </span>
       </Link>
