@@ -26,7 +26,7 @@ export default function LoLRanking() {
           setError({ status: err.status, message: msg || 'Unknown error' });
         } else {
           // Si es un error genérico de JS
-          setError({ status: 500, message: err.message || 'Error connecting to server' });
+          setError({ status: err.status || 500, message: err.message || 'Error connecting to server' });
         }
       });
   }, [serverId, rankingId]);
