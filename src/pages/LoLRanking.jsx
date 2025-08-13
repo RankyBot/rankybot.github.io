@@ -10,18 +10,27 @@ export default function LoLRanking() {
   const { serverId, rankingId } = useParams();
   const { user } = useContext(AuthContext);
   const [accounts, setAccounts] = useState([]);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) return navigate('/');
-
     fetchSpecificRanking(serverId, rankingId)
       .then(data => {
         const sorted = [...data.accounts].sort(compareAccounts);
         setAccounts(sorted);
       })
-      .catch(() => alert('Error cargando ranking'));
-  }, [user, serverId, rankingId, navigate]);
+      .catch(async (err) => {
+        // Si viene de fetch estándar y err es un Response
+        if (err instanceof Response) {
+          const msg = await err.text();
+          setError({ status: err.status, message: msg || 'Error desconocido' });
+        } else {
+          // Si es un error genérico de JS
+          setError({ status: 500, message: err.message || 'Error de conexión con el servidor' });
+        }
+      });
+  }, [serverId, rankingId]);
+
 
   function compareAccounts(a, b) {
     const tiers = [
@@ -54,34 +63,53 @@ export default function LoLRanking() {
 
   return (
     <Layout>
-      <h2 className="text-3xl font-bold mb-6">Ranking: {rankingId}</h2>
-      <div className="overflow-x-auto">
-        <table className="w-full text-left bg-emerald-950 rounded-lg shadow">
-          <thead className="bg-emerald-800">
-            <tr>
-              <th className="px-4 py-2">#</th>
-              <th className="px-4 py-2">Player</th>
-              <th className="px-4 py-2">Tier</th>
-              <th className="px-4 py-2">LP</th>
-              <th className="px-4 py-2">Win rate</th>
-            </tr>
-          </thead>
-          <tbody>
-            {accounts.map((acc, index) => (
-              <tr key={acc.id} className="hover:bg-emerald-800 transition">
-                <td className="px-4 py-2">{index + 1}</td>
-                <td className="px-4 py-2">{acc.name}#{acc.tagLine}</td>
-                <td className="px-4 py-2">{acc.rank.tier} {acc.rank.division}</td>
-                <td className="px-4 py-2">{acc.rank.leaguePoints}</td>
-                <td className="px-4 py-2">
-                  {acc.rank.winrate.wins}W / {acc.rank.winrate.losses}L (
-                  {getWinratePercentage(acc.rank.winrate).toFixed(2)}%)
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      {/* Si hay error, mostramos pantalla de error */}
+      {error && (
+        <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
+          <h1 className="text-4xl font-bold text-red-600">Error {error.status}</h1>
+          <p className="text-lg mt-4">{error.message}</p>
+        </div>
+      )}
+
+      {/* Si no hay error pero aún no cargamos cuentas */}
+      {!error && accounts.length === 0 && (
+        <p className="text-center mt-10">Cargando...</p>
+      )}
+
+      {/* Si no hay error y sí hay cuentas */}
+      {!error && accounts.length > 0 && (
+        <>
+          <h2 className="text-3xl font-bold mb-6">Ranking: {rankingId}</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left bg-emerald-950 rounded-lg shadow">
+              <thead className="bg-emerald-800">
+                <tr>
+                  <th className="px-4 py-2">#</th>
+                  <th className="px-4 py-2">Player</th>
+                  <th className="px-4 py-2">Tier</th>
+                  <th className="px-4 py-2">LP</th>
+                  <th className="px-4 py-2">Win rate</th>
+                </tr>
+              </thead>
+              <tbody>
+                {accounts.map((acc, index) => (
+                  <tr key={acc.id} className="hover:bg-emerald-800 transition">
+                    <td className="px-4 py-2">{index + 1}</td>
+                    <td className="px-4 py-2">{acc.name}#{acc.tagLine}</td>
+                    <td className="px-4 py-2">{acc.rank.tier} {acc.rank.division}</td>
+                    <td className="px-4 py-2">{acc.rank.leaguePoints}</td>
+                    <td className="px-4 py-2">
+                      {acc.rank.winrate.wins}W / {acc.rank.winrate.losses}L (
+                      {getWinratePercentage(acc.rank.winrate).toFixed(2)}%)
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
+
       <Footer />
     </Layout>
   );
