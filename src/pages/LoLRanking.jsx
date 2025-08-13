@@ -23,10 +23,10 @@ export default function LoLRanking() {
         // Si viene de fetch estándar y err es un Response
         if (err instanceof Response) {
           const msg = await err.text();
-          setError({ status: err.status, message: msg || 'Error desconocido' });
+          setError({ status: err.status, message: msg || 'Unknown error' });
         } else {
           // Si es un error genérico de JS
-          setError({ status: 500, message: err.message || 'Error de conexión con el servidor' });
+          setError({ status: 500, message: err.message || 'Error connecting to server' });
         }
       });
   }, [serverId, rankingId]);
