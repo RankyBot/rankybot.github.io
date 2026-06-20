@@ -17,7 +17,18 @@ export async function fetchGuildRankings(guildId) {
 }
 
 export async function fetchSpecificRanking(guildId, rankingId) {
-  const res = await fetch(`${BASE_URL}/rankings/fromGuild/${guildId}/ranking/${rankingId}`, {
+  const res = await fetch(`${BASE_URL}/rankings/fromGuild/${guildId}/soloQ/${rankingId}`, {
+    credentials: 'include'
+  });
+  if (!res.ok) {
+      const msg = await res.text();
+      throw { status: res.status, message: msg || 'Unknown error' };
+    }
+  return res.json();
+}
+
+export async function fetchSpecificFlexQRanking(guildId, rankingId) {
+  const res = await fetch(`${BASE_URL}/rankings/fromGuild/${guildId}/flexQ/${rankingId}`, {
     credentials: 'include'
   });
   if (!res.ok) {
