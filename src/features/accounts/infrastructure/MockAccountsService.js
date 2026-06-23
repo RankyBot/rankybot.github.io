@@ -81,5 +81,3 @@ class MockAccountsService {
 }
 
 export default MockAccountsService;
-
-export default MockAccountsService;

@@ -76,5 +76,3 @@ class MockRankingsService {
 }
 
 export default MockRankingsService;
-
-export default MockRankingsService;
