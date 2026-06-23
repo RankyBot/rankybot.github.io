@@ -4,11 +4,18 @@ const PROFILE = process.env.REACT_APP_PROFILE || 'deployed';
 const profiles = {
   local: {
     apiBaseUrl: 'http://localhost:8080',
-    environment: 'development'
+    environment: 'development',
+    mockMode: false
   },
   deployed: {
     apiBaseUrl: 'https://api.ranky.top',
-    environment: 'production'
+    environment: 'production',
+    mockMode: false
+  },
+  mock: {
+    apiBaseUrl: 'http://localhost:3000',
+    environment: 'development',
+    mockMode: true
   }
 };
 

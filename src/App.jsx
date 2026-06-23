@@ -1,12 +1,18 @@
 import React from 'react';
+import {HashRouter as Router, Route, Routes} from 'react-router-dom';
+import {AuthProvider} from './shared/context/AuthContext';
+import HomePage from './features/auth/ui/HomePage';
 import './index.css';
 
 function App() {
   return (
-      <div className="app">
-        <h1>Ranky - League of Legends Rankings</h1>
-        <p>Frontend overhaul in progress...</p>
-    </div>
+      <AuthProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<HomePage/>}/>
+          </Routes>
+        </Router>
+      </AuthProvider>
   );
 }
 
