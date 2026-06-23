@@ -1,24 +1,13 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import './index.css';
 
-import { AuthProvider } from './context/AuthContext';
-
-import Home from './pages/Home';
-import Rankings from './pages/Rankings';
-import LoLRanking from './pages/LoLRanking';
-
-export default function App() {
+function App() {
   return (
-    <div className="min-h-screen bg-ranky-radial text-gray-900">
-      <AuthProvider>
-        <Router>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/servers/:serverId/rankings" element={<Rankings />} />
-            <Route path="/servers/:serverId/ranking/:rankingId" element={<LoLRanking />} />
-          </Routes>
-        </Router>
-      </AuthProvider>
+      <div className="app">
+        <h1>Ranky - League of Legends Rankings</h1>
+        <p>Frontend overhaul in progress...</p>
     </div>
   );
 }
+
+export default App;
