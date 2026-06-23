@@ -38,7 +38,7 @@ function generateMockUser() {
 
 class MockAuthService {
   static isMockMode() {
-    return config.apiBaseUrl === 'http://localhost:8080';
+    return config.mockMode === true;
   }
 
   static loginWithDiscordMock() {

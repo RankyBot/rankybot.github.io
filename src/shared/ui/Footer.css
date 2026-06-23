@@ -1,0 +1,9 @@
+.app-footer {
+  background: rgba(10, 31, 26, 0.8);
+  border-top: 1px solid rgba(76, 175, 80, 0.2);
+  padding: 2rem;
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+}
+

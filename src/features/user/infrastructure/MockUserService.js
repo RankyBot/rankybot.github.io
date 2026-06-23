@@ -5,10 +5,14 @@ class MockUserService {
     return new Promise(resolve => {
       setTimeout(() => {
         const mockUser = MockAuthService.getMockUser();
+        if (!mockUser) {
+          resolve(null);
+          return;
+        }
         resolve({
-          userId: mockUser.id,
+          userId: mockUser.userId,
           username: mockUser.username,
-          iconUrl: mockUser.avatar
+          iconUrl: mockUser.iconUrl
         });
       }, 300);
     });
