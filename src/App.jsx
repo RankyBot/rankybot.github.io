@@ -1,24 +1,31 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import {HashRouter as Router, Route, Routes} from 'react-router-dom';
+import {AuthProvider} from './shared/context/AuthContext';
+import Layout from './shared/ui/Layout';
+import HomePage from './features/auth/ui/HomePage';
+import PrivacyPage from './features/legal/ui/PrivacyPage';
+import TermsPage from './features/legal/ui/TermsPage';
+import GuildRankingsPage from './features/rankings/ui/GuildRankingsPage';
+import RankingDetailsPage from './features/rankings/ui/RankingDetailsPage';
+import './index.css';
 
-import { AuthProvider } from './context/AuthContext';
-
-import Home from './pages/Home';
-import Rankings from './pages/Rankings';
-import LoLRanking from './pages/LoLRanking';
-
-export default function App() {
+function App() {
   return (
-    <div className="min-h-screen bg-ranky-radial text-gray-900">
       <AuthProvider>
         <Router>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/servers/:serverId/rankings" element={<Rankings />} />
-            <Route path="/servers/:serverId/ranking/:rankingId" element={<LoLRanking />} />
-          </Routes>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<HomePage/>}/>
+              <Route path="/terms" element={<TermsPage/>}/>
+              <Route path="/privacy" element={<PrivacyPage/>}/>
+              <Route path="/guilds" element={<GuildRankingsPage/>}/>
+              <Route path="/guilds/:guildId/rankings/:rankingId"
+                     element={<RankingDetailsPage/>}/>
+            </Routes>
+          </Layout>
         </Router>
       </AuthProvider>
-    </div>
   );
 }
+
+export default App;
