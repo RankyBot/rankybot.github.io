@@ -2,6 +2,7 @@ import React, {useEffect, useMemo, useState} from 'react';
 import {useNavigate, useSearchParams} from 'react-router-dom';
 import {useAuth} from '../../../shared/context/AuthContext';
 import Breadcrumb from '../../../shared/ui/Breadcrumb';
+import LoadingSpinner from '../../../shared/ui/LoadingSpinner';
 import {fetchGuildRankings, fetchMutualGuilds} from '../../../services/api';
 import './GuildRankingsPage.css';
 
@@ -71,7 +72,11 @@ export default function GuildRankingsPage() {
   }, [guildId, isAuthenticated]);
 
   if (authLoading) {
-    return <div className="guild-rankings-page">Loading session...</div>;
+    return (
+        <div className="guild-rankings-page guild-rankings-loading-page">
+          <LoadingSpinner message="Loading session..."/>
+        </div>
+    );
   }
 
   if (!isAuthenticated) {
@@ -106,10 +111,8 @@ export default function GuildRankingsPage() {
           </div>
           <header className="guild-rankings-header">
           </header>
-          <div className="guild-rankings-loading" role="status"
-               aria-live="polite">
-            <span className="guild-rankings-spinner" aria-hidden="true"></span>
-            <p className="guild-rankings-state">Loading rankings...</p>
+          <div className="guild-rankings-loading">
+            <LoadingSpinner message="Loading rankings..."/>
           </div>
         </section>
     );

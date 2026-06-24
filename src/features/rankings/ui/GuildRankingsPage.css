@@ -46,6 +46,10 @@
   color: #b0b0b0;
 }
 
+.guild-rankings-loading-page {
+  min-height: 240px;
+}
+
 .guild-rankings-loading {
   margin-top: 1.75rem;
   min-height: 180px;
@@ -55,20 +59,6 @@
   justify-content: center;
 }
 
-.guild-rankings-spinner {
-  width: 36px;
-  height: 36px;
-  border: 3px solid rgba(76, 175, 80, 0.2);
-  border-top-color: #4caf50;
-  border-radius: 50%;
-  animation: guild-rankings-spin 0.75s linear infinite;
-}
-
-@keyframes guild-rankings-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 .guild-rankings-error {
   color: #ff8f8f;
