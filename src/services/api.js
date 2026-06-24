@@ -13,6 +13,17 @@ const BASE_URL = config.apiBaseUrl;
 // Check if we're in mock mode
 const useMock = config.mockMode === true;
 
+function toApiError(status, message) {
+  const error = new Error(message);
+  error.status = status;
+  return error;
+}
+
+async function getErrorMessage(response, fallbackMessage) {
+  const text = await response.text();
+  return text || fallbackMessage;
+}
+
 // Authentication endpoints
 export async function loginWithDiscord() {
   if (useMock) {
@@ -64,7 +75,10 @@ export async function fetchMutualGuilds() {
   const res = await fetch(`${BASE_URL}/rankings/mutual`, {
     credentials: 'include'
   });
-  if (!res.ok) throw new Error('Error fetching mutual guilds');
+  if (!res.ok) {
+    throw toApiError(res.status,
+        await getErrorMessage(res, 'Error fetching mutual guilds'));
+  }
   return res.json();
 }
 
@@ -75,7 +89,10 @@ export async function fetchGuildRankings(guildId) {
   const res = await fetch(`${BASE_URL}/rankings/fromGuild/${guildId}`, {
     credentials: 'include'
   });
-  if (!res.ok) throw new Error('Error fetching guild rankings');
+  if (!res.ok) {
+    throw toApiError(res.status,
+        await getErrorMessage(res, 'Error fetching guild rankings'));
+  }
   return res.json();
 }
 
@@ -88,8 +105,7 @@ export async function fetchSpecificRanking(guildId, rankingId) {
     credentials: 'include'
   });
   if (!res.ok) {
-    const msg = await res.text();
-    throw {status: res.status, message: msg || 'Unknown error'};
+    throw toApiError(res.status, await getErrorMessage(res, 'Unknown error'));
   }
   return res.json();
 }
@@ -103,8 +119,7 @@ export async function fetchSpecificFlexQRanking(guildId, rankingId) {
     credentials: 'include'
   });
   if (!res.ok) {
-    const msg = await res.text();
-    throw {status: res.status, message: msg || 'Unknown error'};
+    throw toApiError(res.status, await getErrorMessage(res, 'Unknown error'));
   }
   return res.json();
 }
@@ -121,8 +136,8 @@ export async function createRanking(guildId, name) {
         credentials: 'include'
       });
   if (!res.ok) {
-    const msg = await res.text();
-    throw {status: res.status, message: msg || 'Error creating ranking'};
+    throw toApiError(res.status,
+        await getErrorMessage(res, 'Error creating ranking'));
   }
   return res.json();
 }
@@ -138,8 +153,8 @@ export async function deleteRanking(guildId, name) {
         credentials: 'include'
       });
   if (!res.ok) {
-    const msg = await res.text();
-    throw {status: res.status, message: msg || 'Error deleting ranking'};
+    throw toApiError(res.status,
+        await getErrorMessage(res, 'Error deleting ranking'));
   }
   return res.json();
 }
@@ -160,8 +175,8 @@ export async function addAccountsToRanking(guildId, rankingId, accounts) {
         body: JSON.stringify(accounts)
       });
   if (!res.ok) {
-    const msg = await res.text();
-    throw {status: res.status, message: msg || 'Error adding accounts'};
+    throw toApiError(res.status,
+        await getErrorMessage(res, 'Error adding accounts'));
   }
   return res.json();
 }
@@ -182,8 +197,8 @@ export async function removeAccountsFromRanking(guildId, rankingId, accounts) {
         body: JSON.stringify(accounts)
       });
   if (!res.ok) {
-    const msg = await res.text();
-    throw {status: res.status, message: msg || 'Error removing accounts'};
+    throw toApiError(res.status,
+        await getErrorMessage(res, 'Error removing accounts'));
   }
   return res.json();
 }

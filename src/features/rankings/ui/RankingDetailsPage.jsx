@@ -1,6 +1,5 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import {useLocation, useNavigate, useParams} from 'react-router-dom';
-import {useAuth} from '../../../shared/context/AuthContext';
 import Breadcrumb from '../../../shared/ui/Breadcrumb';
 import LoadingSpinner from '../../../shared/ui/LoadingSpinner';
 import {
@@ -171,7 +170,6 @@ async function fetchRankingByQueue(guildId, rankingId, queueType) {
 }
 
 export default function RankingDetailsPage() {
-  const {isAuthenticated, loading: authLoading} = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const {guildId: guildIdParam, rankingId: rankingIdParam} = useParams();
@@ -236,28 +234,25 @@ export default function RankingDetailsPage() {
 
         setRanking(rankingResult);
 
-        if (isAuthenticated) {
-          try {
-            const mutualGuilds = await fetchMutualGuilds();
+        try {
+          const mutualGuilds = await fetchMutualGuilds();
 
-            if (isCancelled) {
-              return;
-            }
-
-            const selectedGuild = Array.isArray(mutualGuilds)
-                ? mutualGuilds.find(guild => guild.id === guildId)
-                : null;
-            setGuildName(selectedGuild?.name || location.state?.guildName ||
-                '');
-          } catch (guildError) {
-            // Public ranking access should not fail if guild lookup is unavailable.
-            setGuildName(location.state?.guildName || '');
+          if (isCancelled) {
+            return;
           }
-        } else {
+
+          const selectedGuild = Array.isArray(mutualGuilds)
+              ? mutualGuilds.find(guild => guild.id === guildId)
+              : null;
+          setGuildName(selectedGuild?.name || location.state?.guildName ||
+              '');
+        } catch (guildError) {
+          // Ranking visibility is decided by backend; guild name enrichment is optional.
           setGuildName(location.state?.guildName || '');
         }
       } catch (err) {
         if (!isCancelled) {
+          setRanking(null);
           setError(err?.message || `Error loading ${formatQueueLabel(
               selectedQueue)} ranking details.`);
         }
@@ -273,16 +268,7 @@ export default function RankingDetailsPage() {
     return () => {
       isCancelled = true;
     };
-  }, [guildId, isAuthenticated, location.state?.guildName, rankingId,
-    selectedQueue]);
-
-  if (authLoading) {
-    return (
-        <div className="ranking-details-page ranking-details-loading-page">
-          <LoadingSpinner message="Loading session..."/>
-        </div>
-    );
-  }
+  }, [guildId, location.state?.guildName, rankingId, selectedQueue]);
 
   if (!guildId || !rankingId) {
     return (
