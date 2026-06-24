@@ -213,7 +213,7 @@ export default function RankingDetailsPage() {
   };
 
   useEffect(() => {
-    if (!isAuthenticated || !guildId || !rankingId) {
+    if (!guildId || !rankingId) {
       setRanking(null);
       setError('');
       setLoading(false);
@@ -227,10 +227,8 @@ export default function RankingDetailsPage() {
       setError('');
 
       try {
-        const [rankingResult, mutualGuilds] = await Promise.all([
-          fetchRankingByQueue(guildId, rankingId, selectedQueue),
-          fetchMutualGuilds()
-        ]);
+        const rankingResult = await fetchRankingByQueue(guildId, rankingId,
+            selectedQueue);
 
         if (isCancelled) {
           return;
@@ -238,10 +236,26 @@ export default function RankingDetailsPage() {
 
         setRanking(rankingResult);
 
-        const selectedGuild = Array.isArray(mutualGuilds)
-            ? mutualGuilds.find(guild => guild.id === guildId)
-            : null;
-        setGuildName(selectedGuild?.name || location.state?.guildName || '');
+        if (isAuthenticated) {
+          try {
+            const mutualGuilds = await fetchMutualGuilds();
+
+            if (isCancelled) {
+              return;
+            }
+
+            const selectedGuild = Array.isArray(mutualGuilds)
+                ? mutualGuilds.find(guild => guild.id === guildId)
+                : null;
+            setGuildName(selectedGuild?.name || location.state?.guildName ||
+                '');
+          } catch (guildError) {
+            // Public ranking access should not fail if guild lookup is unavailable.
+            setGuildName(location.state?.guildName || '');
+          }
+        } else {
+          setGuildName(location.state?.guildName || '');
+        }
       } catch (err) {
         if (!isCancelled) {
           setError(err?.message || `Error loading ${formatQueueLabel(
@@ -266,14 +280,6 @@ export default function RankingDetailsPage() {
     return (
         <div className="ranking-details-page ranking-details-loading-page">
           <LoadingSpinner message="Loading session..."/>
-        </div>
-    );
-  }
-
-  if (!isAuthenticated) {
-    return (
-        <div className="ranking-details-page ranking-details-state">
-          Login to view ranking details.
         </div>
     );
   }
