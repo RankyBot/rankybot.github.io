@@ -14,19 +14,23 @@ const BASE_URL = config.apiBaseUrl;
 const useMock = config.mockMode === true;
 
 // Authentication endpoints
+export function getLogoutUrl() {
+  return `${BASE_URL}/auth/logout`;
+}
+
 export async function loginWithDiscord() {
   if (useMock) {
-    return MockAuthService.loginWithDiscord();
+    return MockAuthService.loginWithDiscordMock();
   }
   window.location.href = `${BASE_URL}/auth`;
 }
 
 export async function logout() {
   if (useMock) {
-    return MockAuthService.logout();
+    return MockAuthService.logoutMock();
   }
   // Use top-level navigation so backend logout redirect is honored by the browser.
-  window.location.href = `${BASE_URL}/auth/logout`;
+  window.location.assign(getLogoutUrl());
 }
 
 // User endpoints
