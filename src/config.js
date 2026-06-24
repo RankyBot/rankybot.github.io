@@ -1,5 +1,9 @@
 // Profile-based environment configuration (Spring-style)
-const PROFILE = process.env.REACT_APP_PROFILE || 'deployed';
+const isRankyProductionHost = typeof window !== 'undefined'
+    && /(^|\.)ranky\.top$/i.test(window.location.hostname);
+const PROFILE = isRankyProductionHost
+    ? 'deployed'
+    : (process.env.REACT_APP_PROFILE || 'deployed');
 
 const profiles = {
   local: {
