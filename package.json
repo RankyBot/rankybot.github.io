@@ -19,7 +19,7 @@
     "dev:deployed": "cross-env REACT_APP_PROFILE=deployed react-scripts start",
     "dev:local": "cross-env REACT_APP_PROFILE=local react-scripts start",
     "dev:mock": "cross-env REACT_APP_PROFILE=mock react-scripts start",
-    "build": "react-scripts build",
+    "build": "cross-env REACT_APP_PROFILE=deployed react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "postbuild": "rimraf docs && xcopy build docs /E /I /Y"
