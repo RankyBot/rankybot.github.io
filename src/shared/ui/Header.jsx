@@ -24,6 +24,9 @@ export default function Header() {
             <span>Ranky</span>
           </Link>
           <nav className="navbar-actions">
+            <Link to="/how-it-works" className="navbar-link">
+              About Ranky
+            </Link>
             {loading ? (
                 <span className="loading">Loading...</span>
             ) : isAuthenticated ? (

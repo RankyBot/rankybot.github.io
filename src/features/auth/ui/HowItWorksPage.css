@@ -1,0 +1,99 @@
+.how-page {
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  padding: 3rem 2rem 4rem;
+}
+
+.how-page__container {
+  max-width: 960px;
+  margin: 0 auto;
+  background: rgba(26, 58, 46, 0.45);
+  border: 1px solid rgba(76, 175, 80, 0.2);
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.how-page__eyebrow {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: #81c784;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.how-page h1 {
+  margin: 0 0 0.75rem;
+  font-size: 40px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #4caf50, #81c784);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.how-page__lead {
+  color: #b0b0b0;
+  line-height: 1.7;
+}
+
+.how-page__sections {
+  margin-top: 1rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.how-page__section {
+  padding: 1.2rem;
+}
+
+.how-page__section h2 {
+  margin: 0 0 0.75rem;
+  color: #4caf50;
+  font-size: 20px;
+}
+
+.how-page__section p,
+.how-page__section li {
+  color: #d8d8d8;
+  line-height: 1.7;
+}
+
+.how-page__section ul,
+.how-page__section ol {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.how-page__cta {
+  display: inline-block;
+  margin-top: 1rem;
+  background: linear-gradient(135deg, #5865f2, #4752c4);
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 0.65rem 1rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.how-page__cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(88, 101, 242, 0.35);
+}
+
+@media (max-width: 768px) {
+  .how-page {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .how-page__container {
+    padding: 1.5rem;
+  }
+
+  .how-page h1 {
+    font-size: 32px;
+  }
+}
+
