@@ -72,10 +72,26 @@
 }
 
 .guild-ranking-card {
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+  appearance: none;
   background: rgba(10, 31, 26, 0.75);
   border: 1px solid rgba(76, 175, 80, 0.24);
   border-radius: 12px;
   padding: 1rem;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.guild-ranking-card:hover,
+.guild-ranking-card:focus-visible {
+  border-color: rgba(102, 187, 106, 0.7);
+  transform: translateY(-2px);
+}
+
+.guild-ranking-card:focus-visible {
+  outline: 2px solid rgba(102, 187, 106, 0.8);
+  outline-offset: 2px;
 }
 
 .guild-ranking-card h2 {

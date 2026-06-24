@@ -36,6 +36,15 @@ export default function GuildRankingsPage() {
     navigate('/');
   };
 
+  const handleRankingClick = (rankingName) => {
+    navigate(
+        `/guilds/${encodeURIComponent(guildId)}/rankings/${encodeURIComponent(
+            rankingName)}`,
+        {
+          state: {guildName}
+        });
+  };
+
   useEffect(() => {
     if (!isAuthenticated || !guildId) {
       setRankings([]);
@@ -151,15 +160,17 @@ export default function GuildRankingsPage() {
         {!error && rankings.length > 0 && (
             <div className="guild-rankings-grid">
               {rankings.map((ranking, index) => (
-                  <article
+                  <button
+                      type="button"
                       key={`${ranking.name}-${index}`}
                       className="guild-ranking-card"
+                      onClick={() => handleRankingClick(ranking.name)}
                   >
                     <h2>{ranking.name}</h2>
                     <p>
                       {ranking.amountOfAccounts || 0} tracked accounts
                     </p>
-                  </article>
+                  </button>
               ))}
             </div>
         )}

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import {useAuth} from '../context/AuthContext';
 import {loginWithDiscord, logout} from '../../services/api';
 import MockAuthService
@@ -27,10 +28,11 @@ export default function Header() {
   return (
       <header className="app-header">
         <div className="navbar-container">
-          <div className="navbar-logo">
+          <Link to="/" className="navbar-logo"
+                aria-label="Go to Ranky home page">
             <img src="/ranky-logo.png" alt="Ranky Logo" className="logo"/>
             <span>Ranky</span>
-          </div>
+          </Link>
           <nav className="navbar-actions">
             {loading ? (
                 <span className="loading">Loading...</span>

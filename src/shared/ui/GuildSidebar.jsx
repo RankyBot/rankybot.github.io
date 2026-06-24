@@ -47,69 +47,71 @@ export default function GuildSidebar() {
 
   return (
       <aside className={`guild-sidebar ${isExpanded ? 'is-expanded' : ''}`}>
-        {!isExpanded && (
-            <button
-                className="guild-sidebar-toggle guild-sidebar-toggle-collapsed"
-                onClick={() => setIsExpanded(true)}
-                aria-label="Expand server list"
-                title="Expand"
-            >
-          <span className="guild-sidebar-hamburger" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-            </button>
-        )}
-
-        <div className="guild-sidebar-content">
-          {isExpanded && (
-              <div className="guild-sidebar-expanded-header">
-                <p className="guild-sidebar-heading">Servers</p>
-                <button
-                    className="guild-sidebar-toggle guild-sidebar-toggle-close"
-                    onClick={() => setIsExpanded(false)}
-                    aria-label="Collapse server list"
-                    title="Collapse"
-                >
-              <span className="guild-sidebar-hamburger is-open"
-                    aria-hidden="true">
-                <span></span>
-                <span></span>
-                <span></span>
-              </span>
-                </button>
-              </div>
-          )}
-          {guildsLoading && <p className="guild-sidebar-state">...</p>}
-          {!guildsLoading && guildsError && (
-              <p className="guild-sidebar-state guild-sidebar-error">!</p>
-          )}
-          {!guildsLoading && !guildsError && guilds.length === 0 && (
-              <p className="guild-sidebar-state">0</p>
+        <div className="guild-sidebar-panel">
+          {!isExpanded && (
+              <button
+                  className="guild-sidebar-toggle guild-sidebar-toggle-collapsed"
+                  onClick={() => setIsExpanded(true)}
+                  aria-label="Expand server list"
+                  title="Expand"
+              >
+            <span className="guild-sidebar-hamburger" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+              </button>
           )}
 
-          {!guildsLoading && !guildsError && guilds.length > 0 && (
-              <div className="guild-sidebar-list">
-                {guilds.map(guild => (
-                    <button
-                        key={guild.id}
-                        className={`guild-sidebar-item ${selectedGuildId
-                        === guild.id ? 'is-active' : ''}`}
-                        onClick={() => handleOpenGuild(guild.id)}
-                        title={guild.name}
-                    >
-                      <img
-                          src={guild.iconUrl || '/ranky-logo.png'}
-                          alt={guild.name}
-                          className="guild-sidebar-avatar"
-                      />
-                      {isExpanded && <span
-                          className="guild-sidebar-name">{guild.name}</span>}
-                    </button>
-                ))}
-              </div>
-          )}
+          <div className="guild-sidebar-content">
+            {isExpanded && (
+                <div className="guild-sidebar-expanded-header">
+                  <p className="guild-sidebar-heading">Servers</p>
+                  <button
+                      className="guild-sidebar-toggle guild-sidebar-toggle-close"
+                      onClick={() => setIsExpanded(false)}
+                      aria-label="Collapse server list"
+                      title="Collapse"
+                  >
+                <span className="guild-sidebar-hamburger is-open"
+                      aria-hidden="true">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+                  </button>
+                </div>
+            )}
+            {guildsLoading && <p className="guild-sidebar-state">...</p>}
+            {!guildsLoading && guildsError && (
+                <p className="guild-sidebar-state guild-sidebar-error">!</p>
+            )}
+            {!guildsLoading && !guildsError && guilds.length === 0 && (
+                <p className="guild-sidebar-state">0</p>
+            )}
+
+            {!guildsLoading && !guildsError && guilds.length > 0 && (
+                <div className="guild-sidebar-list">
+                  {guilds.map(guild => (
+                      <button
+                          key={guild.id}
+                          className={`guild-sidebar-item ${selectedGuildId
+                          === guild.id ? 'is-active' : ''}`}
+                          onClick={() => handleOpenGuild(guild.id)}
+                          title={guild.name}
+                      >
+                        <img
+                            src={guild.iconUrl || '/ranky-logo.png'}
+                            alt={guild.name}
+                            className="guild-sidebar-avatar"
+                        />
+                        {isExpanded && <span
+                            className="guild-sidebar-name">{guild.name}</span>}
+                      </button>
+                  ))}
+                </div>
+            )}
+          </div>
         </div>
       </aside>
   );

@@ -35,8 +35,14 @@ export default function HomePage() {
           </div>
 
           <div className="hero-image">
-            <img src="/banner.png" alt="League of Legends Rankings"
-                 className="banner-img"/>
+            <div className="preview-card">
+              <p className="preview-label">Preview: top 30 EUW from 3 years
+                ago</p>
+              <img src="/bigRanking.png" alt="Ranky ranking preview"
+                   className="banner-img"/>
+              <p className="preview-footer">Keep track of interesting
+                accounts</p>
+            </div>
           </div>
         </section>
 

@@ -1,5 +1,9 @@
 .app-layout {
+  --app-header-height: 0px;
+  --app-footer-overlap: 0px;
+  --app-footer-eat-opacity: 0;
   min-height: 100vh;
+  padding-top: var(--app-header-height, 0px);
   background: linear-gradient(135deg, #0a1f1a 0%, #1a3a2e 100%);
   color: #ffffff;
   font-family: 'Poppins', sans-serif;

@@ -14,8 +14,10 @@ class MockRankingsService {
     return new Promise(resolve => {
       setTimeout(() => {
         const ranking = mockState.rankingDetails[guildId]?.[rankingId] || {
+          id: rankingId,
           name: rankingId,
           amountOfAccounts: 0,
+          isPublic: false,
           accounts: []
         };
         resolve({...ranking, accounts: [...ranking.accounts]});
@@ -27,8 +29,10 @@ class MockRankingsService {
     return new Promise(resolve => {
       setTimeout(() => {
         const ranking = mockState.rankingDetails[guildId]?.[rankingId] || {
+          id: rankingId,
           name: rankingId,
           amountOfAccounts: 0,
+          isPublic: false,
           accounts: []
         };
         resolve({...ranking, accounts: [...ranking.accounts]});
@@ -49,8 +53,10 @@ class MockRankingsService {
         // Add new ranking
         mockState.rankings[guildId].push({name, amountOfAccounts: 0});
         mockState.rankingDetails[guildId][name] = {
+          id: name,
           name,
           amountOfAccounts: 0,
+          isPublic: false,
           accounts: []
         };
 

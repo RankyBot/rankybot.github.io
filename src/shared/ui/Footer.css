@@ -3,7 +3,52 @@
   border-top: 1px solid rgba(76, 175, 80, 0.2);
   padding: 2rem;
   text-align: center;
-  color: #666;
+  color: #b0b0b0;
   font-size: 14px;
+}
+
+.app-footer p {
+  margin: 0;
+}
+
+.app-footer p + p {
+  margin-top: 0.75rem;
+}
+
+.footer-copyright {
+  font-weight: 600;
+  color: #d8d8d8;
+}
+
+.footer-legal-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.footer-disclaimer {
+  text-align: center;
+}
+
+.footer-disclaimer-text {
+  display: inline-block;
+  max-width: 900px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.footer-link {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.footer-link:hover {
+  color: #ffffff;
+}
+
+.footer-separator {
+  color: rgba(176, 176, 176, 0.8);
 }
 
