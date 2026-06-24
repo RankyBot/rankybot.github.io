@@ -1,13 +1,11 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import {useNavigate, useSearchParams} from 'react-router-dom';
-import {useAuth} from '../../../shared/context/AuthContext';
 import Breadcrumb from '../../../shared/ui/Breadcrumb';
 import LoadingSpinner from '../../../shared/ui/LoadingSpinner';
 import {fetchGuildRankings, fetchMutualGuilds} from '../../../services/api';
 import './GuildRankingsPage.css';
 
 export default function GuildRankingsPage() {
-  const {isAuthenticated, loading: authLoading} = useAuth();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const guildId = searchParams.get('guildId');
@@ -46,7 +44,7 @@ export default function GuildRankingsPage() {
   };
 
   useEffect(() => {
-    if (!isAuthenticated || !guildId) {
+    if (!guildId) {
       setRankings([]);
       setGuildName('');
       setError('');
@@ -59,18 +57,21 @@ export default function GuildRankingsPage() {
       setError('');
 
       try {
-        const [guildRankings, mutualGuilds] = await Promise.all([
-          fetchGuildRankings(guildId),
-          fetchMutualGuilds()
-        ]);
+        const guildRankings = await fetchGuildRankings(guildId);
 
         setRankings(Array.isArray(guildRankings) ? guildRankings : []);
 
-        const selectedGuild = Array.isArray(mutualGuilds)
-            ? mutualGuilds.find(guild => guild.id === guildId)
-            : null;
-        setGuildName(selectedGuild?.name || '');
+        try {
+          const mutualGuilds = await fetchMutualGuilds();
+          const selectedGuild = Array.isArray(mutualGuilds)
+              ? mutualGuilds.find(guild => guild.id === guildId)
+              : null;
+          setGuildName(selectedGuild?.name || '');
+        } catch (guildError) {
+          setGuildName('');
+        }
       } catch (err) {
+        setRankings([]);
         setError(err?.message || 'Error loading rankings for this server.');
       } finally {
         setLoading(false);
@@ -78,23 +79,7 @@ export default function GuildRankingsPage() {
     };
 
     loadGuildData();
-  }, [guildId, isAuthenticated]);
-
-  if (authLoading) {
-    return (
-        <div className="guild-rankings-page guild-rankings-loading-page">
-          <LoadingSpinner message="Loading session..."/>
-        </div>
-    );
-  }
-
-  if (!isAuthenticated) {
-    return (
-        <div className="guild-rankings-page guild-rankings-state">
-          Login to view server rankings.
-        </div>
-    );
-  }
+  }, [guildId]);
 
   if (!guildId) {
     return (
