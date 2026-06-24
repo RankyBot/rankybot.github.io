@@ -46,6 +46,18 @@
   gap: 1.5rem;
 }
 
+.navbar-link {
+  color: #b0b0b0;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.navbar-link:hover {
+  color: #81c784;
+}
+
 .user-info {
   display: flex;
   align-items: center;
