@@ -1,28 +1,18 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {useAuth} from '../context/AuthContext';
-import {loginWithDiscord, logout} from '../../services/api';
-import MockAuthService
-  from '../../features/auth/infrastructure/MockAuthService';
+import {getLogoutUrl, loginWithDiscord, logout} from '../../services/api';
 import './Header.css';
 
 export default function Header() {
   const {user, loading, isAuthenticated, isMockMode} = useAuth();
 
   const handleLogin = () => {
-    if (isMockMode) {
-      MockAuthService.loginWithDiscordMock();
-    } else {
-      loginWithDiscord();
-    }
+    loginWithDiscord();
   };
 
   const handleLogout = () => {
-    if (isMockMode) {
-      MockAuthService.logoutMock();
-    } else {
-      logout();
-    }
+    logout();
   };
 
   return (
@@ -46,9 +36,15 @@ export default function Header() {
                     <span
                         className="user-welcome">Welcome, {user?.username}</span>
                   </div>
-                  <button className="btn-logout" onClick={handleLogout}>
-                    Logout
-                  </button>
+                  {isMockMode ? (
+                      <button className="btn-logout" onClick={handleLogout}>
+                        Logout
+                      </button>
+                  ) : (
+                      <a className="btn-logout" href={getLogoutUrl()}>
+                        Logout
+                      </a>
+                  )}
                 </>
             ) : (
                 <button className="btn-discord-login" onClick={handleLogin}>
