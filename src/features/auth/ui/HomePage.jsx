@@ -3,7 +3,7 @@ import {useAuth} from '../../../shared/context/AuthContext';
 import './HomePage.css';
 
 // Discord bot invite URL - update with your bot's OAuth URL
-const DISCORD_BOT_INVITE_URL = 'https://discord.com/oauth2/authorize?client_id=YOUR_BOT_CLIENT_ID&scope=bot&permissions=8';
+const DISCORD_BOT_INVITE_URL = 'https://discord.com/oauth2/authorize?client_id=1005188427634966629&permissions=2952866832&scope=bot';
 
 export default function HomePage() {
   const {isAuthenticated, loading} = useAuth();
