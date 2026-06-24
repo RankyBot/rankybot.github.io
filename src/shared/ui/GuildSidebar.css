@@ -112,6 +112,15 @@
   transform: translateX(2px);
 }
 
+.guild-sidebar-item.is-active {
+  background: rgba(76, 175, 80, 0.16);
+}
+
+.guild-sidebar-item.is-active .guild-sidebar-avatar {
+  border-color: rgba(76, 175, 80, 0.95);
+  box-shadow: 0 12px 22px rgba(76, 175, 80, 0.22);
+}
+
 .guild-sidebar-avatar {
   width: 44px;
   height: 44px;

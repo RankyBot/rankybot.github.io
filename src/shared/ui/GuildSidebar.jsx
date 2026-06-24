@@ -1,14 +1,18 @@
 import React, {useEffect, useState} from 'react';
+import {useNavigate, useSearchParams} from 'react-router-dom';
 import {useAuth} from '../context/AuthContext';
 import {fetchMutualGuilds} from '../../services/api';
 import './GuildSidebar.css';
 
 export default function GuildSidebar() {
   const {isAuthenticated} = useAuth();
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [isExpanded, setIsExpanded] = useState(false);
   const [guilds, setGuilds] = useState([]);
   const [guildsLoading, setGuildsLoading] = useState(false);
   const [guildsError, setGuildsError] = useState(null);
+  const selectedGuildId = searchParams.get('guildId');
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -34,7 +38,7 @@ export default function GuildSidebar() {
   }, [isAuthenticated]);
 
   const handleOpenGuild = guildId => {
-    window.location.href = `/#/guilds?guildId=${encodeURIComponent(guildId)}`;
+    navigate(`/guilds?guildId=${encodeURIComponent(guildId)}`);
   };
 
   if (!isAuthenticated) {
@@ -90,7 +94,8 @@ export default function GuildSidebar() {
                 {guilds.map(guild => (
                     <button
                         key={guild.id}
-                        className="guild-sidebar-item"
+                        className={`guild-sidebar-item ${selectedGuildId
+                        === guild.id ? 'is-active' : ''}`}
                         onClick={() => handleOpenGuild(guild.id)}
                         title={guild.name}
                     >
