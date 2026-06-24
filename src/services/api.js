@@ -25,13 +25,8 @@ export async function logout() {
   if (useMock) {
     return MockAuthService.logout();
   }
-  const res = await fetch(`${BASE_URL}/auth/logout`, {
-    credentials: 'include'
-  });
-  if (!res.ok) {
-    throw new Error('Error logging out');
-  }
-  window.location.href = window.location.origin;
+  // Use top-level navigation so backend logout redirect is honored by the browser.
+  window.location.href = `${BASE_URL}/auth/logout`;
 }
 
 // User endpoints
